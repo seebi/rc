@@ -27,5 +27,5 @@ if [ "$USER" = "$username" ]; then
     rm -rf $rcdir
     git clone git://github.com/seebi/rc.git $rcdir
     cd $rcdir/rc
-    make all
+    make -B all
 fi
