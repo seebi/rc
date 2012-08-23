@@ -7,7 +7,7 @@ all: zsh vim ssh
 	cd ../rc && make all
 
 zsh:
-	rm -rf ~/config/zsh ~/.zshrc
+	rm -rf ~/.config/zsh ~/.zshrc
 	git clone git://github.com/seebi/zshrc.git ~/.config/zsh
 	cd ~/.config/zsh && make install
 
