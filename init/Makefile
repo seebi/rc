@@ -4,12 +4,12 @@ default:
 	@echo "(zsh, vim) !!!Your old config will be deleted!!!"
 
 all: zsh vim ssh
-	cd ../rc && make all
+	cd ../rc && make -B all
 
 zsh:
 	rm -rf ~/.config/zsh ~/.zshrc
 	git clone git://github.com/seebi/zshrc.git ~/.config/zsh
-	cd ~/.config/zsh && make install
+	cd ~/.config/zsh && make -B install
 
 vim:
 	rm -rf ~/.vimrc ~/.vim

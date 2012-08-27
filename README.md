@@ -8,6 +8,5 @@ Instead of running the init script below you should sneak into the configs and c
 
 *Use at your own risk!! this will overwrite your current zsh, ssh, vim and git config.*
 
-    wget https://raw.github.com/seebi/rc/master/init/init.sh
-    chmod a+x init.sh
-    ./init.sh
+    wget https://raw.github.com/seebi/rc/master/init/init.sh && chmod a+x init.sh
+

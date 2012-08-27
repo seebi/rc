@@ -6,7 +6,7 @@
 #
 
 # needed packages
-packages="zsh git exuberant-ctags"
+packages="make zsh git exuberant-ctags"
 username="seebi"
 
 if [ "$USER" = "root" ]; then
