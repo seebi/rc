@@ -26,6 +26,6 @@ if [ "$USER" = "$username" ]; then
     rcdir=~/.config/rc
     rm -rf $rcdir
     git clone git://github.com/seebi/rc.git $rcdir
-    cd $rcdir/rc
+    cd $rcdir/init
     make -B all
 fi
