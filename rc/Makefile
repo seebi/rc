@@ -6,5 +6,5 @@ default:
 all: gitconfig
 
 gitconfig:
-	rm ~/.gitconfig
+	rm -f ~/.gitconfig
 	ln -s ${PWD}/gitconfig ~/.gitconfig
