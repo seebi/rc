@@ -10,6 +10,6 @@ gitconfig:
 	ln -s ${PWD}/gitconfig ~/.gitconfig
 
 zsh:
-	rm ~/.config/zsh/private.final.zsh
+	rm -f ~/.config/zsh/private.final.zsh
 	ln -s ${PWD}/private.final.zsh ~/.config/zsh/private.final.zsh
 
