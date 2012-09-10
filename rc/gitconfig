@@ -9,28 +9,29 @@
 
 [alias]
 ## shortcuts
-    a      = add
-    b      = branch
-    ba     = branch -a
-    c      = commit -S
-    cp     = commit
-    cl     = clone
-    co     = checkout
-    coi    = checkout-index
-    d      = diff
-    dc     = diff --cached
-    f      = fetch
-    ff     = "!git f && git smf" # fetch current and all subdirectories
-    p      = pull
-    pp     = "!git p && git smp" # pull current and all subdirectories
-    s      = status -sb
-    st     = status
-    aa     = add .         # add all
-    au     = add -u        # add all modified files which are already tracked (see http://stackoverflow.com/questions/572549/)
-
+    a        = add
+    aa       = add .         # add all
+    au       = add -u        # add all modified files which are already tracked (see http://stackoverflow.com/questions/572549/)
+    b        = branch
+    ba       = branch -a
+    c        = commit -S
+    cp       = commit
+    cl       = clone
+    co       = checkout
+    coi      = checkout-index
+    d        = diff
+    dc       = diff --cached
+    f        = fetch
+    ff       = "!git f && git smf" # fetch current and all subdirectories
+    p        = pull
+    pp       = "!git p && git smp" # pull current and all subdirectories
+    s        = status -sb
+    st       = status
     staged   = diff --cached        # what is already in the index
-    unstage  = reset HEAD           # unadd everything / drop index but keep changes
+    t        = tag
     unchange = checkout-index -a -f # drop changes but keep the index / staged changes
+    unstage  = reset HEAD           # unadd everything / drop index but keep changes
+    unstash  = stash apply
 
 ## log stuff
     x           = log -10 --format=format:'%Cgreen%h%Creset %Cred%d%Creset %s %Cblue(%ar by %an)%Creset'
