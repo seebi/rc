@@ -11,10 +11,12 @@
 ## shortcuts
     a      = add
     b      = branch
+    ba     = branch -a
     c      = commit -S
     cp     = commit
     cl     = clone
     co     = checkout
+    coi    = checkout-index
     d      = diff
     dc     = diff --cached
     f      = fetch
@@ -45,7 +47,7 @@
     jenkins=notes --ref jenkins show
     # meld diff between branches and much more
     # git://github.com/wmanley/git-meld.git
-    meld="!/home/seebi/opt/git-meld/git-meld.pl"
+    meld="!~/.local/bin/git-meld.pl"
     # shows ignored directories
     ignored   = "!git ls-files --others -i --exclude-standard --directory"
     # show users which have commits in current branch
@@ -83,7 +85,7 @@
     sms   = "!git smferq git status --porcelain"
     smst  = "!git smferq git status"
     # submodule update
-    smp   = "!git smfer git --no-pager pull"
+    smp   = "!git smfer 'git --no-pager pull || echo failed' "
     smf   = "!git smfer git --no-pager fetch"
 
 # merging
@@ -134,7 +136,15 @@
     versiontag = v
 
 [diff]
-#    external = meld
+    #external = ~/.local/scripts/gitOpendiff.sh
+    tool=default-difftool
+
+#http://stackoverflow.com/questions/8156493/git-vimdiff-and-dirdiff
+[difftool "default-difftool"]
+    cmd = vim -f '+next' '+execute \"DirDiff\" argv(0) argv(1)' $LOCAL $REMOTE
+
+[difftool]
+    prompt = false
 
 [merge]
     tool = meld
