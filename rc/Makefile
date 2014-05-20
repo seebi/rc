@@ -11,6 +11,7 @@ git:
 
 zsh:
 	rm -f ~/.config/zsh/private.final.zsh
+	touch ${PWD}/private.final.zsh
 	ln -s ${PWD}/private.final.zsh ~/.config/zsh/private.final.zsh
 
 tmux:
