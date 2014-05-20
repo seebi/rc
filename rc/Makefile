@@ -3,9 +3,9 @@ PWD="`pwd`"
 default:
 	@echo "You can choose which config you want to populate"
 
-all: gitconfig zsh
+all: git zsh tmux
 
-gitconfig:
+git:
 	rm -f ~/.gitconfig
 	ln -s ${PWD}/gitconfig ~/.gitconfig
 
