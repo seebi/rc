@@ -3,25 +3,30 @@
 # http://nerderati.com/2010/07/making-git-behave/
 
 [user]
-    name  = Sebastian Tramp
-    email = mail@sebastian.tramp.name
-    signingkey = 9D601B44
+	name = Sebastian Tramp
+	email = mail@sebastian.tramp.name
+    signingkey = 2ED13866
 
 [alias]
 ## shortcuts
     a        = add
-    aa       = add .         # add all
-    au       = add -u        # add all modified files which are already tracked (see http://stackoverflow.com/questions/572549/)
+    aa       = add .           # add all
+    au       = add --update :/ # add all modified files which are already tracked
     b        = branch
     ba       = branch -a
     c        = commit -S
     cp       = commit
     cl       = clone
     co       = checkout
+    ci       = checkout-index
     coi      = checkout-index
+    ce       = config --edit
+    ceg      = config --edit --global
     d        = diff
     dc       = diff --cached
-    f        = fetch
+    dt       = difftool
+    dtc      = difftool --cached
+    f        = fetch --prune --all
     ff       = "!git f && git smf" # fetch current and all subdirectories
     p        = pull
     pp       = "!git p && git smp" # pull current and all subdirectories
@@ -32,8 +37,14 @@
     unchange = checkout-index -a -f # drop changes but keep the index / staged changes
     unstage  = reset HEAD           # unadd everything / drop index but keep changes
     unstash  = stash apply
+    # jump command shortcuts
+    jm       = jump merge
+    jd       = jump diff
+    jdc      = jump diff --cached
+    jg       = jump grep -Ri
 
 ## log stuff
+    l           = "!git --no-pager log -1 --format=format:\"$path: %Cgreen%s%Creset (%Cred$(git rev-parse --abbrev-ref HEAD)%Creset/%ar)\"; echo "
     x           = log -10 --format=format:'%Cgreen%h%Creset %Cred%d%Creset %s %Cblue(%ar by %an)%Creset'
     xlog        = log -10 --format=format:'%Cgreen%h%Creset %Cred%d%Creset %s %Cblue(%ar by %an)%Creset'
     xlogall     = log -10 --branches --format=format:'%Cgreen%h%Creset %Cred%d%Creset %s %Cblue(%ar by %an)%Creset'
@@ -75,8 +86,7 @@
     # submodule last message
     # --format=format:'%Cgreen%h%Creset %Cred%d%Creset %s %Cblue(%ar by
     # %an)%Creset)
-    sml   = "!git --paginate smfeq  'git --no-pager log -1 --format=format:\"$path: %Cgreen%s%Creset (%Cred$(git rev-parse --abbrev-ref HEAD)%Creset/%ar)\"; echo '"
-    smlr  = "!git --paginate smferq 'git --no-pager log -1 --format=format:\"$path: %Cgreen%s%Creset (%Cred$(git rev-parse --abbrev-ref HEAD)%Creset/%ar)\"; echo '"
+    sml  = "!git l; git --paginate smferq 'git --no-pager log -1 --format=format:\"$path: %Cgreen%s%Creset (%Cred$(git rev-parse --abbrev-ref HEAD)%Creset/%ar)\"; echo '"
     # submodule branches
     smb   = "!git smfeq  'echo \"$(git rev-parse --abbrev-ref HEAD) -> $path\"'"
     smbr  = "!git smferq 'echo \"$(git rev-parse --abbrev-ref HEAD) -> $path\"'"
@@ -87,7 +97,7 @@
     smst  = "!git smferq git status"
     # submodule update
     smp   = "!git smfer 'git --no-pager pull || echo failed' "
-    smf   = "!git smfer git --no-pager fetch"
+    smf   = "!git smfer git --no-pager fetch --prune --all"
 
 # merging
     m-noff = merge --no-ff    # no fast forward merge
@@ -138,17 +148,17 @@
 
 [diff]
     #external = ~/.local/scripts/gitOpendiff.sh
-    tool=default-difftool
+	tool = Kaleidoscope
 
 #http://stackoverflow.com/questions/8156493/git-vimdiff-and-dirdiff
 [difftool "default-difftool"]
     cmd = vim -f '+next' '+execute \"DirDiff\" argv(0) argv(1)' $LOCAL $REMOTE
 
 [difftool]
-    prompt = false
+	prompt = false
 
 [merge]
-    tool = meld
+	tool = Kaleidoscope
 
 [interactive]
     singlekey = true
@@ -159,6 +169,18 @@
 [rerere]
     enabled = 1
 
-[remote "origin"]
-    fetch = +refs/notes/*:refs/notes/*
+#[remote "origin"]
+    #fetch = +refs/notes/*:refs/notes/*
 
+[push]
+	default = simple
+[remote-hg]
+	hg-git-compat = true
+[mergetool]
+	keepBackup = true
+	prompt = false
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
