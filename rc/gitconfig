@@ -3,12 +3,14 @@
 # http://nerderati.com/2010/07/making-git-behave/
 
 [user]
-	name = Sebastian Tramp
-	email = mail@sebastian.tramp.name
+    name = Sebastian Tramp
+    email = mail@sebastian.tramp.name
     signingkey = 2ED13866
 
 [alias]
 ## shortcuts
+    release  = release
+    eccinit  = eccinit
     a        = add
     aa       = add .           # add all
     au       = add --update :/ # add all modified files which are already tracked
@@ -17,18 +19,23 @@
     c        = commit -S
     cp       = commit
     cl       = clone
+    cr       = clone --recursive
     co       = checkout
     ci       = checkout-index
     coi      = checkout-index
     ce       = config --edit
     ceg      = config --edit --global
+    desc     = describe --always --dirty
     d        = diff
-    dc       = diff --cached
     dt       = difftool
+    dc       = diff --cached
     dtc      = difftool --cached
+    ds       = diff --staged
+    dts      = difftool --staged
     f        = fetch --prune --all
     ff       = "!git f && git smf" # fetch current and all subdirectories
-    p        = pull
+    m        = multi
+    p        = up
     pp       = "!git p && git smp" # pull current and all subdirectories
     s        = status -sb
     st       = status
@@ -36,7 +43,7 @@
     t        = tag
     unchange = checkout-index -a -f # drop changes but keep the index / staged changes
     unstage  = reset HEAD           # unadd everything / drop index but keep changes
-    unstash  = stash apply
+    unstash  = stash pop
     # jump command shortcuts
     jm       = jump merge
     jd       = jump diff
@@ -148,17 +155,17 @@
 
 [diff]
     #external = ~/.local/scripts/gitOpendiff.sh
-	tool = Kaleidoscope
+    tool = Kaleidoscope
 
 #http://stackoverflow.com/questions/8156493/git-vimdiff-and-dirdiff
 [difftool "default-difftool"]
     cmd = vim -f '+next' '+execute \"DirDiff\" argv(0) argv(1)' $LOCAL $REMOTE
 
 [difftool]
-	prompt = false
+    prompt = false
 
 [merge]
-	tool = Kaleidoscope
+    tool = Kaleidoscope
 
 [interactive]
     singlekey = true
@@ -173,14 +180,22 @@
     #fetch = +refs/notes/*:refs/notes/*
 
 [push]
-	default = simple
+    default = simple
 [remote-hg]
-	hg-git-compat = true
+    hg-git-compat = true
 [mergetool]
-	keepBackup = true
-	prompt = false
+    keepBackup = true
+    prompt = false
 [difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustExitCode = true
+
+[lfs]
+    url = https://artifactory.eccenca.com/api/lfs/download-eccenca-com
+
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
