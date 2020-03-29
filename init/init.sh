@@ -6,8 +6,8 @@
 #
 
 # needed packages
-packages="make zsh git exuberant-ctags byobu"
-username="seebi"
+packages="make zsh git exuberant-ctags byobu exa neovim"
+username="stramp"
 
 if [ "$USER" = "root" ]; then
     apt-get update
