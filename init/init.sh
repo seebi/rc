@@ -25,7 +25,7 @@ if [ "$USER" = "$username" ]; then
     # this will setup git, ssh, vim, zsh, ...
     rcdir=~/.config/rc
     rm -rf $rcdir
-    git clone git://github.com/seebi/rc.git $rcdir
+    git clone https://github.com/seebi/rc.git $rcdir
     cd $rcdir/init
     make -B all
 fi
