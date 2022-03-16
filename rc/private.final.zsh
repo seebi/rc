@@ -1,6 +1,6 @@
 
 export DEBFULLNAME="Sebastian Tramp"
-export DEBEMAIL="tramp@informatik.uni-leipzig.de"
+export DEBEMAIL="mail@sebastian.tramp.name"
 
 # start a screen/tmux session if not already in it
 if [[ "$TERM" =~ "^screen.*$" ]]; then
