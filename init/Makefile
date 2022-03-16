@@ -13,9 +13,9 @@ zsh:
 
 vim:
 	rm -rf ~/.vimrc ~/.vim
-	git clone git://github.com/seebi/vimrc.git ~/.vim
-	cd ~/.vim && git config submodule.bundle/semweb.url "git://github.com/seebi/semweb.vim.git"
-	cd ~/.vim && git config submodule.bundle/easychair.url "git://github.com/seebi/easychair.vim.git"
+	git clone https://github.com/seebi/vimrc.git ~/.vim
+	cd ~/.vim && git config submodule.bundle/semweb.url "https://github.com/seebi/semweb.vim.git"
+	cd ~/.vim && git config submodule.bundle/easychair.url "https://github.com/seebi/semweb.vim.git"
 	cd ~/.vim && git submodule init
 	cd ~/.vim && git submodule update
 	ln -s ~/.vim/vimrc ~/.vimrc
@@ -23,7 +23,6 @@ vim:
 
 ssh:
 	mkdir -p ~/.ssh/
-	rm -rf ~/.ssh/authorized_keys
-	echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAA+QCqLroD36lPqezLOD9YANdv0l0t5SizRFOF8b+wtARsD/2D2PuHYi+qucxruPbNO8ys/oeRJqmZCeirHwaSDtg3uFjD/OwcQ8BHEonr/6ECwM3cBAbdRNX6dCjTb6BcnUKZQHkNcl9eTaPVOjQIQhM0WBduOmVwgZLBqBwDbzJqpPBiisiK5H66GUH3NrTvWkFqs32tebSu9GgrQro58Wp4rtYUH221emhz2lXpa26vM3w9Ji9516VlXXSgiCDvkOzTk/Z2S9e0OX/ENDuBpXtiH/tiTEnyxcqVW/Hrl+pWERSI2E11AWxAQHL4GTCRso0vPmLliS9JEQ==" >~/.ssh/authorized_keys
+	echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAsp78I8VZxdTdfFqhttwetGJbYmKl1Wm63QH4rkT6ku" >>~/.ssh/authorized_keys
 
 
