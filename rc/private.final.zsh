@@ -6,5 +6,5 @@ export DEBEMAIL="tramp@informatik.uni-leipzig.de"
 if [[ "$TERM" =~ "^screen.*$" ]]; then
     # I'm already inside of a screen
 else
-    byobu -r || byobu && clear && exit
+    byobu && clear && exit
 fi
