@@ -8,7 +8,7 @@ all: zsh vim ssh
 
 zsh:
 	rm -rf ~/.config/zsh ~/.zshrc
-	git clone git://github.com/seebi/zshrc.git ~/.config/zsh
+	git clone https://github.com/seebi/zshrc.git ~/.config/zsh
 	cd ~/.config/zsh && make -B install
 
 vim:
