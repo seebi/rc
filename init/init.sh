@@ -7,25 +7,18 @@
 
 # needed packages
 packages="make zsh git exuberant-ctags byobu exa neovim"
-username="stramp"
 
-if [ "$USER" = "root" ]; then
-    apt-get update
-    apt-get upgrade
-    apt-get install $packages
-    useradd -m -s `which zsh` $username
-fi
+sudo apt update
+sudo apt upgrade
+sudo install $packages
 
-if [ "$USER" = "$username" ]; then
+# xdb directories
+mkdir -p ~/.config/ ~/.cache/
 
-    # xdb directories
-    mkdir -p ~/.config/ ~/.cache/
-
-    # clone and run
-    # this will setup git, ssh, vim, zsh, ...
-    rcdir=~/.config/rc
-    rm -rf $rcdir
-    git clone https://github.com/seebi/rc.git $rcdir
-    cd $rcdir/init
-    make -B all
-fi
+# clone and run
+# this will setup git, ssh, vim, zsh, ...
+rcdir=~/.config/rc
+rm -rf $rcdir
+git clone https://github.com/seebi/rc.git $rcdir
+cd $rcdir/init
+make -B all
