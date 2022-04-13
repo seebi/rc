@@ -6,7 +6,7 @@
 #
 
 # needed packages
-packages="make zsh git exuberant-ctags byobu exa neovim"
+packages="make zsh git exuberant-ctags byobu exa neovim byobu"
 
 sudo apt update
 sudo apt upgrade
