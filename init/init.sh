@@ -6,11 +6,9 @@
 #
 
 # needed packages
-packages="make zsh git exuberant-ctags byobu exa neovim byobu exa"
-
 sudo apt update
 sudo apt upgrade
-sudo install $packages
+sudo apt install make zsh git exuberant-ctags byobu exa neovim
 
 # xdb directories
 mkdir -p ~/.config/ ~/.cache/
